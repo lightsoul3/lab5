@@ -2,7 +2,7 @@ package database;
 
 public class Service {
 
-    public static void createTables(DBManager dbManager){
+    public static void createRegion(DBManager dbManager) {
 
         dbManager.executeUpdate("CREATE TABLE region " +
                 "(id INTEGER AUTO_INCREMENT PRIMARY KEY, " +
@@ -11,6 +11,10 @@ public class Service {
                 "people_number INT NOT NULL, " +
                 "animal_number INT NOT NULL)"
         );
+
+    }
+
+    public static void createVanished(DBManager dbManager) {
 
         dbManager.executeUpdate("CREATE TABLE vanished" +
                 "(id INTEGER AUTO_INCREMENT PRIMARY KEY, " +
@@ -24,7 +28,9 @@ public class Service {
                 "FOREIGN KEY (region) REFERENCES region (id))"
         );
 
+    }
 
+    public static void createLastPlace(DBManager dbManager) {
         dbManager.executeUpdate("CREATE TABLE last_seeing_place " +
                 "(id INTEGER AUTO_INCREMENT PRIMARY KEY, " +
                 "region_name TEXT NOT NULL, " +
