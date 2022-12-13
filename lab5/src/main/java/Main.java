@@ -7,11 +7,12 @@ public class Main {
 
         DBManager dbManager = new DBManager("jdbc:mysql://localhost:3306/information_about_vanished", "root", "xyf377j0");
 
-        Service.createRegion(dbManager);
-        Service.createVanished(dbManager);
-        Service.createLastPlace(dbManager);
+        Service s = new Service(dbManager);
+        s.createRegion();
+        s.createVanished();
+        s.createLastPlace();
         
-        Service.dropTables(dbManager);
+       // s.dropTables();
 
         dbManager.close();
 

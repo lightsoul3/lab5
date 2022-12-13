@@ -2,7 +2,13 @@ package database;
 
 public class Service {
 
-    public static void createRegion(DBManager dbManager) {
+    private DBManager dbManager;
+
+    public Service(DBManager dbManager){
+        this.dbManager = dbManager;
+    }
+
+    public void createRegion() {
 
         dbManager.executeUpdate("CREATE TABLE region " +
                 "(id INTEGER AUTO_INCREMENT PRIMARY KEY, " +
@@ -14,7 +20,7 @@ public class Service {
 
     }
 
-    public static void createVanished(DBManager dbManager) {
+    public void createVanished() {
 
         dbManager.executeUpdate("CREATE TABLE vanished" +
                 "(id INTEGER AUTO_INCREMENT PRIMARY KEY, " +
@@ -30,7 +36,7 @@ public class Service {
 
     }
 
-    public static void createLastPlace(DBManager dbManager) {
+    public void createLastPlace() {
         dbManager.executeUpdate("CREATE TABLE last_seeing_place " +
                 "(id INTEGER AUTO_INCREMENT PRIMARY KEY, " +
                 "region_name TEXT NOT NULL, " +
@@ -42,7 +48,7 @@ public class Service {
 
     }
 
-    public static void dropTables(DBManager dbManager){
+    public void dropTables(){
 
         dbManager.executeUpdate("DROP TABLE last_seeing_place;");
         dbManager.executeUpdate("DROP TABLE vanished;");
